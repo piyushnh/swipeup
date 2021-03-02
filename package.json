@@ -9,10 +9,15 @@
     "axios": "^0.21.1",
     "cloudinary-core": "^2.11.3",
     "cloudinary-react": "^1.6.8",
+    "imagekit": "^3.1.1",
+    "imagekitio-react": "^1.0.9",
+    "node-sass": "^5.0.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-scripts": "4.0.3",
     "react-swipeable-views": "^0.13.9",
+    "react-swipeable-views-utils": "^0.13.9",
+    "swiper": "^6.4.15",
     "web-vitals": "^1.1.0"
   },
   "scripts": {

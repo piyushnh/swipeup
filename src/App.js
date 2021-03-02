@@ -2,69 +2,86 @@ import React, { useEffect,useState} from 'react';
 import {Image, CloudinaryContext, Transformation} from 'cloudinary-react';
 import axios from 'axios';
 import SwipeableViews from 'react-swipeable-views';
+import './App.css';
+import SwiperCore, { Pagination } from 'swiper';
+import { makeStyles } from '@material-ui/core/styles';
 
+SwiperCore.use([Pagination]);
+
+// Import Swiper styles
 const styles = {
   slideContainer: {
     height: '100vh',
-    // marginTop: '25%'
   },
   slide: {
     // padding: 15,
-    marginTop:"10vh",
-    marginBottom:"10vh",
-    minHeight: '80vh',
-    color: '#fff',
+    // margin:"auto",
+    height: "100%",
+    // verticalAlign: "middle"
+    // marginBottom:"25%",
+    // minHeight: '80%',
   },
-  slide1: {
-    backgroundColor: '#FEA900',
-  },
-  slide2: {
-    backgroundColor: '#B3DC4A',
-  },
-  slide3: {
-    backgroundColor: '#E3DC4B',
-  },
-  scroll: {
-    height: 100,
-    overflow: 'scroll',
-  }
+  
 };
 
 
-function App() {
 
+
+
+function App() {
+  // const classes = useStyles();
   const [images, setImage] = useState([]);
+  const [imageWidth, setImageWidth] = useState(400);
+
   useEffect(() => {
     async function fetchData() {
-      let response = await axios.get(`http://res.cloudinary.com/keepup/image/list/test.json`);
+      let response = await axios.get(`http://res.cloudinary.com/keepup/image/list/swipeup.json`);
       console.log(response)
-      let imageList = response.data.resources
-      setImage([...imageList])
+      let imageDataList = response.data.resources
+      setImage([...imageDataList])
+
     }
     fetchData();
   }, [])
 
+  useEffect(() => {
+    function handleResize() {
+      let windowWidth = window.innerWidth;
+      if (windowWidth <= 1000){
+        setImageWidth(windowWidth)
+      }
+      else{
+        setImageWidth(900)
+      }
+    }
+
+    window.addEventListener('resize', handleResize);
+    handleResize()
+    // return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  
+
   return (
-    <SwipeableViews containerStyle={styles.slideContainer} axis="y" enableMouseEvents resistance>
- 
-     <div style={Object.assign({}, styles.slide, styles.slide1)}>slide n°1</div>
-    <div style={Object.assign({}, styles.slide, styles.slide2)}>slide n°2</div>
-    <div style={Object.assign({}, styles.slide, styles.slide3)}>slide n°3</div>
-  {/* <div style={Object.assign({}, styles.slide, styles.slide3)}>slide n°3</div> */}
-  </SwipeableViews>
-  );
-}
-{/* <div>
-<CloudinaryContext cloudName="keepup">
-<SwipeableViews containerStyle={styles.slideContainer} axis="y" enableMouseEvents>
+    <SwipeableViews animateHeight containerStyle={styles.slideContainer} slideStyle={styles.slide}
+     axis="y" enableMouseEvents resistance>
     {images.map((item) => 
-         <Image publicId={item.public_id} style={Object.assign({}, styles.slide, styles.slide1)} />
+    <div className="imageCard">
+      <Image cloudName="keepup" publicId={item.public_id}
+      responsive
+      width={imageWidth.toString()}
+      crop="scale"
+      responsiveUseBreakpoints="true"
+      styles={styles.slide}
+      />
+    </div>  
          )
        } 
-    <div style={Object.assign({}, styles.slide, styles.slide1)}>slide n°1</div>
-<div style={Object.assign({}, styles.slide, styles.slide2)}>slide n°2</div>
- <div style={Object.assign({}, styles.slide, styles.slide3)}>slide n°3</div>
+
  </SwipeableViews>
- </CloudinaryContext>
-</div> */}
+  );
+}
+
+
+
 export default App;
