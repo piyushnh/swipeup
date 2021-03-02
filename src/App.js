@@ -4,7 +4,7 @@ import axios from 'axios';
 import SwipeableViews from 'react-swipeable-views';
 import './App.css';
 import SwiperCore, { Pagination } from 'swiper';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 
 SwiperCore.use([Pagination]);
 
