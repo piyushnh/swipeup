@@ -69,7 +69,6 @@ function App() {
     <div className="imageCard">
       <Image cloudName="keepup" secure publicId={item.public_id}
       dpr="auto"
-      loading="lazy"
       responsive
       width={imageWidth.toString()}
       responsiveUseBreakpoints="true"
