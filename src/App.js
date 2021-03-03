@@ -68,11 +68,12 @@ function App() {
     {images.map((item) => 
     <div className="imageCard">
       <Image cloudName="keepup" secure publicId={item.public_id}
+      dpr="auto"
+      loading="lazy"
       responsive
       width={imageWidth.toString()}
-      crop="scale"
       responsiveUseBreakpoints="true"
-      styles={styles.slide}
+      quality="100"
       />
     </div>  
          )

@@ -12,6 +12,6 @@
 
 .cld-responsive{
   max-height: 70vh;
-  /* max-width: min(750px, 100vh); */
+  max-width: min(750px, 100vh);
   
 }
