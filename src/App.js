@@ -35,7 +35,7 @@ function App() {
 
   useEffect(() => {
     async function fetchData() {
-      let response = await axios.get(`http://res.cloudinary.com/keepup/image/list/swipeup.json`);
+      let response = await axios.get(`https://res.cloudinary.com/keepup/image/list/swipeup.json`);
       console.log(response)
       let imageDataList = response.data.resources
       setImage([...imageDataList])
