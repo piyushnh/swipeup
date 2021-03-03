@@ -67,7 +67,7 @@ function App() {
      axis="y" enableMouseEvents resistance>
     {images.map((item) => 
     <div className="imageCard">
-      <Image cloudName="keepup" publicId={item.public_id}
+      <Image cloudName="keepup" secure publicId={item.public_id}
       responsive
       width={imageWidth.toString()}
       crop="scale"
