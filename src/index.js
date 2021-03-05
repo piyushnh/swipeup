@@ -4,6 +4,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 // import Container from '@material-ui/core/Container';
+import ReactGA from 'react-ga';
+
+
+ReactGA.initialize('UA-121464669-4');
+ReactGA.pageview('/homepage');
+
 
 ReactDOM.render(
   <React.StrictMode>

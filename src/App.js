@@ -4,6 +4,8 @@ import axios from 'axios';
 import SwipeableViews from 'react-swipeable-views';
 import './App.css';
 import SwiperCore, { Pagination } from 'swiper';
+import ReactGA from 'react-ga';
+
 // import { makeStyles } from '@material-ui/core/styles';
 
 SwiperCore.use([Pagination]);
@@ -32,11 +34,11 @@ function App() {
   // const classes = useStyles();
   const [images, setImage] = useState([]);
   const [imageWidth, setImageWidth] = useState(400);
+  const [swipeCount, setSwipeCount] = useState(0);
 
   useEffect(() => {
     async function fetchData() {
-      let response = await axios.get(`https://res.cloudinary.com/keepup/image/list/swipeup.json`);
-      console.log(response)
+      let response = await axios.get(`https://res.cloudinary.com/snackapp/image/list/swipeup.json`);
       let imageDataList = response.data.resources
       setImage([...imageDataList])
 
@@ -60,14 +62,27 @@ function App() {
     // return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const onSwipe = () => {
+    let updatedCount = swipeCount + 1;
+    setSwipeCount(updatedCount)
+
+    ReactGA.event({
+      category: 'User',
+      action: 'Swiped',
+      value: updatedCount
+    });
+    console.log('swiped' +  updatedCount.toString());
+  }
+
   
 
   return (
-    <SwipeableViews animateHeight containerStyle={styles.slideContainer} slideStyle={styles.slide}
-     axis="y" enableMouseEvents resistance>
+    <SwipeableViews containerStyle={styles.slideContainer} slideStyle={styles.slide}
+      onChangeIndex = {onSwipe}
+     axis="y" enableMouseEvents resistance >
     {images.map((item) => 
     <div className="imageCard">
-      <Image cloudName="keepup" secure publicId={item.public_id}
+      <Image cloudName="snackapp" secure publicId={item.public_id}
       dpr="auto"
       responsive
       width={imageWidth.toString()}
