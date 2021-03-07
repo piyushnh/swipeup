@@ -38,8 +38,11 @@ function App() {
 
   useEffect(() => {
     async function fetchData() {
-      let response = await axios.get(`https://res.cloudinary.com/snackapp/image/list/swipeup.json`);
-      let imageDataList = response.data.resources
+      let responseFirst = await axios.get(`https://res.cloudinary.com/snackapp/image/list/first.json`);
+      let responseRest = await axios.get(`https://res.cloudinary.com/snackapp/image/list/swipeup.json`);
+      let firstData = responseFirst.data.resources
+      let restData = responseRest.data.resources
+      let imageDataList = firstData.concat(restData)
       setImage([...imageDataList])
 
     }
@@ -71,7 +74,6 @@ function App() {
       action: 'Swiped',
       value: updatedCount
     });
-    console.log('swiped' +  updatedCount.toString());
   }
 
   
