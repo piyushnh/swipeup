@@ -19,7 +19,7 @@ const styles = {
   slide: {
     // padding: 15,
     // margin:"auto",
-    height: "100vh",
+    height: "100%",
     // verticalAlign: "middle"
     // marginBottom:"25%",
     // minHeight: '80%',

@@ -12,7 +12,7 @@ function App() {
 
   return (
     <div className="swipe-animation"> 
-    <p id="text">Please Swipe Up</p>
+    <p id="text">Swipe Up for next</p>
 
     <div className="arrow">
         <span></span>
