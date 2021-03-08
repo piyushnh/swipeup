@@ -6,6 +6,7 @@ import './App.css';
 import SwiperCore, { Pagination } from 'swiper';
 import ReactGA from 'react-ga';
 
+import SwipeAnimation from './components/SwipeAnimation';
 // import { makeStyles } from '@material-ui/core/styles';
 
 SwiperCore.use([Pagination]);
@@ -18,7 +19,7 @@ const styles = {
   slide: {
     // padding: 15,
     // margin:"auto",
-    height: "100%",
+    height: "100vh",
     // verticalAlign: "middle"
     // marginBottom:"25%",
     // minHeight: '80%',
@@ -72,7 +73,6 @@ function App() {
     ReactGA.event({
       category: 'User',
       action: 'Swiped',
-      value: updatedCount
     });
   }
 
@@ -82,7 +82,8 @@ function App() {
     <SwipeableViews containerStyle={styles.slideContainer} slideStyle={styles.slide}
       onChangeIndex = {onSwipe}
      axis="y" enableMouseEvents resistance >
-    {images.map((item) => 
+    {images.map((item, index) => 
+    <div>
     <div className="imageCard">
       <Image cloudName="snackapp" secure publicId={item.public_id}
       dpr="auto"
@@ -91,7 +92,10 @@ function App() {
       responsiveUseBreakpoints="true"
       quality="100"
       />
-    </div>  
+      
+    </div>
+    {index == 0 && <SwipeAnimation />}
+    </div>
          )
        } 
 
