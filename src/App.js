@@ -76,6 +76,34 @@ function App() {
     });
   }
 
+  const normalImage = (item) => (
+    <div className="imageCard"> 
+      <Image cloudName="snackapp" secure publicId={item.public_id}
+      dpr="auto"
+      responsive
+      width={imageWidth.toString()}
+      responsiveUseBreakpoints="true"
+      quality="100"
+      />
+    </div>
+
+  )
+  
+  const lazyImage = (item) => (
+    <div className="imageCard"> 
+      <Image cloudName="snackapp" secure publicId={item.public_id}
+      dpr="auto"
+      responsive
+      width={imageWidth.toString()}
+      responsiveUseBreakpoints="true"
+      quality="100"
+      loading="lazy"
+      />
+    </div>
+
+  )
+  
+
   
 
   return (
@@ -84,20 +112,17 @@ function App() {
      axis="y" enableMouseEvents resistance >
     {images.map((item, index) => 
     <div>
-    <div className="imageCard">
-      <Image cloudName="snackapp" secure publicId={item.public_id}
-      dpr="auto"
-      responsive
-      width={imageWidth.toString()}
-      responsiveUseBreakpoints="true"
-      quality="100"
-      />
+    {
+      index < 15 ?
+      normalImage(item)
+      :
+      lazyImage(item)
+    }
       
-    </div>
     {index == 0 && <SwipeAnimation />}
     </div>
          )
-       } 
+      } 
 
  </SwipeableViews>
   );

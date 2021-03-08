@@ -1,17 +1,29 @@
 
-  .arrow{
+  #text{
+    color: white;
+
+  }
+  .swipe-animation{
+      display: flex;
       position: fixed;
-      transform: translate(-50%,-50%);
-      margin-left: 50%;
-      margin-right: 50%;
-      bottom: 0;
+      width: 100%;
+      bottom: 15px;
+      flex-flow: column wrap;
+      justify-content: center;
+      align-items: center;
+
+
+
+  }
+  .arrow{
+      
   }
   .arrow span{
       display: block;
       width: 30px;
       height: 30px;
-      border-top: 5px solid #0d415e;
-      border-left: 5px solid #0d415e;
+      border-top: 5px solid #d3e9f5;
+      border-left: 5px solid #d3e9f5;
       transform: rotate(45deg);
       margin: -10px;
       animation: animate 2s infinite;
