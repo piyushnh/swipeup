@@ -12,12 +12,13 @@ function App() {
 
   return (
     <div className="swipe-animation"> 
+    <p id="text">Please Swipe Up</p>
+
     <div className="arrow">
         <span></span>
         <span></span>
         <span></span>
     </div>
-    <p id="text">Please Swipe Up</p>
     </div>
   );
 }
