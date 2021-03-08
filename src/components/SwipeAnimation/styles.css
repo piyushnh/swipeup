@@ -10,8 +10,8 @@
       display: block;
       width: 30px;
       height: 30px;
-      border-top: 5px solid #06A8FF;
-      border-left: 5px solid #06A8FF;
+      border-top: 5px solid #0d415e;
+      border-left: 5px solid #0d415e;
       transform: rotate(45deg);
       margin: -10px;
       animation: animate 2s infinite;
