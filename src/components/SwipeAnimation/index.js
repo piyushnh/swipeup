@@ -14,11 +14,11 @@ function App() {
     <div className="swipe-animation"> 
     <p id="text">Swipe Up for next</p>
 
-    <div className="arrow">
+    {/* <div className="arrow">
         <span></span>
         <span></span>
         <span></span>
-    </div>
+    </div> */}
     </div>
   );
 }
