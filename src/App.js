@@ -71,8 +71,7 @@ function App() {
   }, []);
 
   const onSwipe = () => {
-    let updatedCount = swipeCount + 1;
-    setSwipeCount(updatedCount)
+
 
     ReactGA.event({
       category: 'User',
