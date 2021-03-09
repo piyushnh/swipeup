@@ -40,11 +40,15 @@ function App() {
   useEffect(() => {
     async function fetchData() {
       let responseFirst = await axios.get(`https://res.cloudinary.com/snackapp/image/list/first.json`);
-      let responseRest = await axios.get(`https://res.cloudinary.com/snackapp/image/list/swipeup.json`);
       let firstData = responseFirst.data.resources
+      setImage([...firstData])
+      
+      let responseRest = await axios.get(`https://res.cloudinary.com/snackapp/image/list/swipeup.json`);
       let restData = responseRest.data.resources
       let imageDataList = firstData.concat(restData)
+      await new Promise(resolve => setTimeout(resolve, 4000));
       setImage([...imageDataList])
+
 
     }
     fetchData();
@@ -84,6 +88,7 @@ function App() {
       width={imageWidth.toString()}
       responsiveUseBreakpoints="true"
       quality="100"
+      key={item.public_id}
       />
     </div>
 
@@ -102,7 +107,13 @@ function App() {
     </div>
 
   )
-  
+  function timeout(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+  async function waitTimer(){
+    let res = await  new Promise(resolve => setTimeout(resolve, 1000));
+    return <div></div>
+  }
 
   
 
@@ -112,13 +123,8 @@ function App() {
      axis="y" enableMouseEvents resistance >
     {images.map((item, index) => 
     <div>
-    {
-      index < 5 ?
-      normalImage(item)
-      :
-      lazyImage(item)
-    }
-      
+    
+    {normalImage(item)}
     {index == 0 && <SwipeAnimation />}
     </div>
          )
