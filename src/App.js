@@ -19,7 +19,7 @@ const styles = {
   slide: {
     // padding: 15,
     // margin:"auto",
-    height: "100%",
+    height: "100vh",
     // verticalAlign: "middle"
     // marginBottom:"25%",
     // minHeight: '80%',
@@ -113,7 +113,7 @@ function App() {
     {images.map((item, index) => 
     <div>
     {
-      index < 15 ?
+      index < 5 ?
       normalImage(item)
       :
       lazyImage(item)
