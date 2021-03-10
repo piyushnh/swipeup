@@ -1,10 +1,28 @@
 import React, { useEffect,useState} from 'react';
-import {Image, CloudinaryContext, Transformation} from 'cloudinary-react';
+import {Image} from 'cloudinary-react';
 import axios from 'axios';
 import SwipeableViews from 'react-swipeable-views';
-import './App.css';
 import SwiperCore, { Pagination } from 'swiper';
 import ReactGA from 'react-ga';
+import { Mixpanel } from './MixPanel';
+
+import './App.css';
+
+
+// import {
+//   FacebookIcon,
+//   RedditIcon,
+//   TelegramIcon,
+//   TwitterIcon,
+//   WhatsappIcon,
+// } from "react-share";
+
+// import {
+//   RedditShareButton,
+//   TwitterShareButton,
+//   WhatsappShareButton,
+//   FacebookShareButton
+// } from "react-share";
 
 import SwipeAnimation from './components/SwipeAnimation';
 // import { makeStyles } from '@material-ui/core/styles';
@@ -33,9 +51,11 @@ const styles = {
 
 function App() {
   // const classes = useStyles();
+  const url = 'https://snackapp.in/';
   const [images, setImage] = useState([]);
   const [imageWidth, setImageWidth] = useState(400);
-  const [swipeCount, setSwipeCount] = useState(0);
+  // const [swipeCount, setSwipeCount] = useState(0);
+  console.log(process.env.NODE_ENV);
 
   useEffect(() => {
     async function fetchData() {
@@ -72,6 +92,7 @@ function App() {
 
   const onSwipe = () => {
 
+    Mixpanel.track('Swiped');
 
     ReactGA.event({
       category: 'User',
@@ -124,6 +145,7 @@ function App() {
     <div>
     
     {normalImage(item)}
+
     {index == 0 && <SwipeAnimation />}
     </div>
          )
