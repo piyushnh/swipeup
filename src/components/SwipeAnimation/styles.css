@@ -9,7 +9,7 @@
       display: flex;
       position: relative;
       width: 100%;
-      bottom: 2vh;
+      margin-top: 5vh;
       flex-flow: column wrap;
       justify-content: center;
       align-items: center;

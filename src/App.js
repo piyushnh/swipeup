@@ -101,7 +101,7 @@ function App() {
   }
 
   const normalImage = (item) => (
-    <div className="imageCard"> 
+    <div> 
       <Image cloudName="snackapp" secure publicId={item.public_id}
       dpr="auto"
       responsive
@@ -115,7 +115,7 @@ function App() {
   )
   
   const lazyImage = (item) => (
-    <div className="imageCard"> 
+    <div > 
       <Image cloudName="snackapp" secure publicId={item.public_id}
       dpr="auto"
       responsive
@@ -142,7 +142,7 @@ function App() {
       onChangeIndex = {onSwipe}
      axis="y" enableMouseEvents resistance >
     {images.map((item, index) => 
-    <div>
+    <div className="imageCard">
     
     {normalImage(item)}
 
