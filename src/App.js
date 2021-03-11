@@ -146,7 +146,7 @@ function App() {
     
     {normalImage(item)}
 
-    {index == 0 && <SwipeAnimation />}
+    <SwipeAnimation />
     </div>
          )
       } 

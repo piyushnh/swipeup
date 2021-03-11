@@ -2,13 +2,14 @@
   #text{
     color: white;
     /* bottom:5vh; */
+    margin: 0;
 
   }
   .swipe-animation{
       display: flex;
       position: relative;
       width: 100%;
-      /* bottom: 15px; */
+      bottom: 2vh;
       flex-flow: column wrap;
       justify-content: center;
       align-items: center;
